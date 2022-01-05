@@ -1,0 +1,151 @@
+.overlay {
+  background: url('../../../assets/images/technology/background-technology-desktop.jpg')
+    no-repeat left bottom;
+  background-size: cover;
+}
+
+.technology {
+  --tech-type-font-size: 4.1rem;
+}
+
+.technology-page-intro {
+  font-family: var(--secondary-font), sans-serif;
+  letter-spacing: 3.5px;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+.technology-page-intro span {
+  margin-right: 20px;
+  opacity: 0.6;
+}
+
+.content-render {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 0.8fr;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.intro {
+  font-family: var(--tertiary-font);
+}
+
+.tech-type {
+  margin: 5px 0 10px;
+  font-family: var(--tertiary-font);
+  font-size: var(--tech-type-font-size);
+  width: max-content;
+}
+
+.description {
+  line-height: 150%;
+}
+
+.image-wrapper img {
+  position: absolute;
+  right: 0;
+  top: 7.5%;
+  height: 85%;
+}
+
+@media (max-width: 1350px) {
+  .technology {
+    --tech-type-font-size: 2.5rem;
+  }
+
+  .intro-phrase {
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: var(--default-horizontal-padding);
+  }
+
+  .content-render {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1070px) {
+  .overlay {
+    background-image: url('../../../assets/images/technology/background-technology-tablet.jpg');
+  }
+
+  .technology {
+    padding: 0;
+  }
+
+  .intro-phrase {
+    position: relative !important;
+  }
+
+  .content-render {
+    grid-template-columns: 1fr;
+    text-align: center;
+
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+  }
+
+  .controls {
+    flex-direction: row;
+    order: 1;
+    height: 40px;
+    width: max-content;
+    margin: 0 auto 20px;
+  }
+
+  .text-content {
+    order: 2;
+    padding-bottom: 30px;
+  }
+
+  .tech-type {
+    margin: 0 auto 10px;
+  }
+
+  .description {
+    width: 50ch;
+    margin: 0 auto;
+  }
+
+  .image-wrapper {
+    order: 0;
+    width: 100%;
+  }
+
+  .image-wrapper img {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .technology {
+    --tech-type-font-size: 2.5rem;
+  }
+
+  .text-content {
+    padding: var(--default-padding);
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .description {
+    width: 100%;
+  }
+}

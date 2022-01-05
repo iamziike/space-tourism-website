@@ -1,0 +1,49 @@
+.overlay {
+  background: url('../../../assets/images/page-not-found/pattern-hills.svg')
+      repeat-x bottom,
+    url('../../../assets/images/page-not-found/bg-stars.svg');
+  background-size: contain cover;
+}
+
+.page-not-found {
+  --font-size: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.page-not-found h1 {
+  font-size: var(--font-size);
+  position: relative;
+  text-shadow: 10px 3px 0px hsla(0, 0%, 0%, 0.838), 5px 1px 0px currentColor;
+  opacity: 0.8;
+  animation: hover 5s ease-in-out infinite both alternate;
+  mix-blend-mode: overlay;
+}
+
+.page-not-found h1::selection {
+  background-color: var(--primary-bg-color);
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5%);
+  }
+}
+
+@media (max-width: 700px) {
+  .page-not-found {
+    --font-size: 15rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .page-not-found {
+    --font-size: 10rem;
+  }
+}

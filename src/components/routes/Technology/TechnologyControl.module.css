@@ -1,0 +1,32 @@
+.control {
+  --controls-font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0px;
+  height: 0px;
+  padding: 30px;
+  border-radius: 50%;
+  opacity: 0.7;
+  border: double 1px var(--primary-color);
+  cursor: pointer;
+  font-family: var(--tertiary-font);
+  font-size: var(--controls-font-size);
+  transition: opacity 0.5s;
+}
+
+.control--selected {
+  background-color: var(--primary-color);
+  color: var(--primary-bg-color);
+}
+
+.control:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1350px) {
+  .control {
+    --controls-font-size: 1rem;
+    padding: 20px;
+  }
+}

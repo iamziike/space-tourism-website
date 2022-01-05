@@ -1,0 +1,45 @@
+:root {
+  /* solid Colors */
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --space-blue: hsl(231, 39%, 7%);
+  --space-blue-opacity: hsl(231, 39%, 7%, 0.5);
+  --rosy-brown: hsl(0, 25%, 65%);
+
+  /* defined Colors */
+  --primary-color: var(--white);
+  --primary-bg-color: var(--space-blue);
+
+  /* font */
+  --primary-font: Barlow-Regular;
+  --secondary-font: Barlow-Condensed;
+  --tertiary-font: Bellefair-Regular;
+
+  /* solid utility */
+  --default-padding: 0 10rem;
+  --default-horizontal-padding: 10rem;
+  --default-vertical-padding: 5.5rem;
+
+  --regular-font-size: 1rem;
+
+  /* components global variables */
+  --navbar-height: 15vh;
+}
+
+@media (max-width: 1070px) {
+  :root {
+    --default-padding: 0 5rem;
+    --default-horizontal-padding: 5rem;
+    --default-vertical-padding: 2.75rem;
+
+    --navbar-height: 10vh;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --default-padding: 0 2.5rem;
+    --default-horizontal-padding: 2.5rem;
+    --default-vertical-padding: 1.375rem;
+  }
+}

@@ -1,38 +1,25 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: Barlow-Regular;
+  src: url('./assets/fonts/Barlow/Barlow-Regular.ttf');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: Barlow-Condensed;
+  src: url('./assets/fonts/Barlow_Condensed/BarlowCondensed-Regular.ttf');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: Bellefair-Regular;
+  src: url('./assets/fonts/Bellefair/Bellefair-Regular.ttf');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+@import './styles/reset.css';
+@import './styles/variables.css';
+@import './styles/utilities.css';
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-color: var(--space-blue);
+  color: var(--primary-color);
+  font-size: var(--regular-font-size);
+  font-family: var(--primary-font), sans-serif;
 }

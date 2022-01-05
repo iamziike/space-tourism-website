@@ -1,0 +1,51 @@
+.padding-horizontal {
+  padding: initial 10rem;
+}
+
+.hover-down {
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.active,
+.hover-down--bottom,
+.hover-down:hover {
+  opacity: 1;
+}
+
+.hover-down::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 120%;
+  background-color: currentColor;
+  transition: bottom 0.5s;
+}
+
+.active::after,
+.hover-down--bottom::after,
+.hover-down:hover::after {
+  bottom: 0%;
+}
+
+.no-visible-scrollbar {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet-Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-display {
+  display: none !important;
+}
+
+.route-content {
+  position: relative;
+  height: calc(100vh - var(--navbar-height));
+  padding: var(--default-padding);
+}
