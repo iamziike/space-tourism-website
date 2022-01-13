@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+
 import DestinationSelect from './DestinationSelect';
 import Overlay from '../../UI/Overlay/Overlay';
 import classes from './Destination.module.css';
@@ -6,6 +8,11 @@ import moon from '../../../assets/images/destination/image-moon.webp';
 import mars from '../../../assets/images/destination/image-mars.webp';
 import europa from '../../../assets/images/destination/image-europa.webp';
 import titan from '../../../assets/images/destination/image-titan.webp';
+import routeExit from '../../../motions/routeExit';
+import {
+  firstChildVariant,
+  lastChildVariant,
+} from '../../../motions/defaultVariants';
 
 const destinationsDataAvailable = [
   {
@@ -56,12 +63,15 @@ const Destination = () => {
   const chosenDestination = destinationsDataAvailable[chosenDestinationIndex];
 
   return (
-    <>
+    <motion.div exit={routeExit}>
       <Overlay className={classes.overlay} />
       <div
         className={`${classes.destination} no-visible-scrollbar route-content`}
       >
-        <div className={classes['destination-render']}>
+        <motion.div
+          className={classes['destination-render']}
+          {...firstChildVariant}
+        >
           <h2>
             <span>01</span>
             PICK YOUR DESTINATION
@@ -69,8 +79,8 @@ const Destination = () => {
           <div className={classes['destination-image-wrapper']}>
             <img src={chosenDestination.url} alt='' />
           </div>
-        </div>
-        <div className={classes.details}>
+        </motion.div>
+        <motion.div className={classes.details} {...lastChildVariant}>
           <div className={classes['destinations-select']}>
             {destinationsDataAvailable.map((destination, index) => {
               const className =
@@ -104,9 +114,9 @@ const Destination = () => {
               <p>{chosenDestination.estTravelTime}</p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

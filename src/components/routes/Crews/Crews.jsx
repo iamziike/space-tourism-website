@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+
 import Overlay from '../../UI/Overlay/Overlay';
 import Crew from './Crew/Crew';
 import CrewsViewControl from './CrewsViewControl';
@@ -7,6 +9,7 @@ import douglasImage from '../../../assets/images/crew/image-douglas-hurley.png';
 import markImage from '../../../assets/images/crew/image-mark-shuttleworth.png';
 import victorImage from '../../../assets/images/crew/image-victor-glover.png';
 import ansariImage from '../../../assets/images/crew/image-anousheh-ansari.png';
+import routeExit from '../../../motions/routeExit';
 
 const crewMembers = [
   {
@@ -47,14 +50,14 @@ const Crews = () => {
   };
 
   return (
-    <>
+    <motion.div exit={routeExit}>
       <Overlay className={classes.overlay} />
       <div className={`${classes.crews} no-visible-scrollbar route-content`}>
         <h2 className={classes.intro}>
           <span>02</span>
           MEET YOUR CREW
         </h2>
-        <div className={classes['crew-list']}>
+        <div>
           {crewMembers.map((crewMember) => {
             return (
               <Crew key={crewMember.id} {...{ ...crewMember, idToShow }} />
@@ -81,7 +84,7 @@ const Crews = () => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

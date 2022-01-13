@@ -19,7 +19,7 @@
   position: relative;
   text-shadow: 10px 3px 0px hsla(0, 0%, 0%, 0.838), 5px 1px 0px currentColor;
   opacity: 0.8;
-  animation: hover 5s ease-in-out infinite both alternate;
+  animation: hovers 5s ease-in-out infinite both alternate;
   mix-blend-mode: overlay;
 }
 
@@ -27,7 +27,7 @@
   background-color: var(--primary-bg-color);
 }
 
-@keyframes hover {
+@keyframes hovers {
   0% {
     transform: translateY(0);
   }

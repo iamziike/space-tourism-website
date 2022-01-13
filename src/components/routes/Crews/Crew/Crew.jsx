@@ -1,3 +1,10 @@
+import { motion } from 'framer-motion';
+
+import {
+  firstChildVariant,
+  lastChildVariant,
+} from '../../../../motions/defaultVariants';
+
 import classes from './Crew.module.css';
 
 const Crew = ({ id, name, image, role, bio, idToShow }) => {
@@ -7,15 +14,15 @@ const Crew = ({ id, name, image, role, bio, idToShow }) => {
         idToShow !== id ? 'no-display no-visible-scrollbar' : ''
       }`}
     >
-      <div className={classes['text-container']}>
+      <motion.div className={classes['text-container']} {...firstChildVariant}>
         <div className={classes.role}>{role.toUpperCase()}</div>
         <div className={classes.name}>{name.toUpperCase()}</div>
         <div className={classes.bio}>{bio}</div>
         <div className={classes['view-controls']}>{}</div>
-      </div>
-      <div className={classes['image-wrapper']}>
+      </motion.div>
+      <motion.div className={classes['image-wrapper']} {...lastChildVariant}>
         <img src={image} alt={classes.name} />
-      </div>
+      </motion.div>
     </div>
   );
 };

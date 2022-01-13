@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
 import Overlay from '../../UI/Overlay/Overlay';
 import TechnologyControl from './TechnologyControl';
 import classes from './Technology.module.css';
@@ -8,6 +10,12 @@ import spaceCapsuleLandscape from '../../../assets/images/technology/image-space
 import spaceCapsulePortrait from '../../../assets/images/technology/image-space-capsule-portrait.jpg';
 import spacePortLandscape from '../../../assets/images/technology/image-spaceport-landscape.jpg';
 import spacePortPortrait from '../../../assets/images/technology/image-spaceport-portrait.jpg';
+import routeExit from '../../../motions/routeExit';
+import {
+  firstChildVariant,
+  lastChildVariant,
+} from '../../../motions/defaultVariants';
+import { controlsVariant, controlVariants } from './technology-variants';
 
 const technologies = [
   {
@@ -41,6 +49,7 @@ const technologies = [
       "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.",
   },
 ];
+
 const Technology = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPortrait, setIsPortrait] = useState(true);
@@ -68,7 +77,8 @@ const Technology = () => {
   return (
     <>
       <Overlay className={classes.overlay} />
-      <div
+      <motion.div
+        exit={routeExit}
         className={`${classes.technology} route-content no-visible-scrollbar`}
       >
         <h2
@@ -78,21 +88,26 @@ const Technology = () => {
           SPACE LAUNCH 101
         </h2>
         <div className={classes['content-render']}>
-          <div className={classes.controls}>
+          <motion.div className={classes.controls} {...controlsVariant}>
             {technologies.map((technology, index) => {
               return (
-                <TechnologyControl
-                  key={technology.id}
-                  {...{
-                    index,
-                    currentIndex,
-                    onControlSelection: controlSelectionHandler,
-                  }}
-                />
+                <motion.div {...controlVariants}>
+                  <TechnologyControl
+                    key={technology.id}
+                    {...{
+                      index,
+                      currentIndex,
+                      onControlSelection: controlSelectionHandler,
+                    }}
+                  />
+                </motion.div>
               );
             })}
-          </div>
-          <div className={classes['text-content']}>
+          </motion.div>
+          <motion.div
+            className={classes['text-content']}
+            {...firstChildVariant}
+          >
             <h2 className={classes.intro}>THE TERMINOLOGY...</h2>
             <h1 className={classes['tech-type']}>
               {currentTechnology.name.toUpperCase()}
@@ -100,8 +115,11 @@ const Technology = () => {
             <p className={classes.description}>
               {currentTechnology.description}
             </p>
-          </div>
-          <div className={classes['image-wrapper']}>
+          </motion.div>
+          <motion.div
+            className={classes['image-wrapper']}
+            {...lastChildVariant}
+          >
             <img
               src={
                 isPortrait
@@ -110,9 +128,9 @@ const Technology = () => {
               }
               alt='technology glance'
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

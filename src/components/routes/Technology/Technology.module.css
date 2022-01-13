@@ -6,6 +6,7 @@
 
 .technology {
   --tech-type-font-size: 4.1rem;
+  padding-right: 0;
 }
 
 .technology-page-intro {
@@ -22,17 +23,18 @@
 
 .content-render {
   display: grid;
-  grid-template-columns: 0.2fr 1fr 0.8fr;
+  grid-template-columns: 0.2fr 1fr 1fr;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  gap: 10px;
+  gap: 20px;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow: hidden;
 }
 
 .intro {
@@ -50,11 +52,13 @@
   line-height: 150%;
 }
 
+.image-wrapper {
+  text-align: end;
+}
+
 .image-wrapper img {
-  position: absolute;
-  right: 0;
-  top: 7.5%;
-  height: 85%;
+  max-width: 100%;
+  width: 90%;
 }
 
 @media (max-width: 1350px) {
@@ -100,9 +104,9 @@
   .controls {
     flex-direction: row;
     order: 1;
-    height: 40px;
     width: max-content;
-    margin: 0 auto 20px;
+    margin: 10px auto 20px;
+    height: max-content;
   }
 
   .text-content {
