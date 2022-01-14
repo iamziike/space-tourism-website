@@ -4,38 +4,38 @@ import { motion } from 'framer-motion';
 import classes from './Crews.module.css';
 import Overlay from '../../UI/Overlay/Overlay';
 import Crew from './Crew/Crew';
-import douglasImage from '../../../assets/images/crew/image-douglas-hurley.png';
-import markImage from '../../../assets/images/crew/image-mark-shuttleworth.png';
-import victorImage from '../../../assets/images/crew/image-victor-glover.png';
-import ansariImage from '../../../assets/images/crew/image-anousheh-ansari.png';
 import routeExit from '../../../motions/routeExit';
 
 const crewMembers = [
   {
     id: Math.random(),
     name: 'Douglas Hurley',
-    image: douglasImage,
+    image:
+      'https://res.cloudinary.com/dnagee/image/upload/v1642159249/space-tourism-website/crew/image-douglas-hurley_ar9bdy.png',
     role: 'Commander',
     bio: 'Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.',
   },
   {
     id: Math.random(),
     name: 'Mark Shuttleworth',
-    image: markImage,
+    image:
+      'https://res.cloudinary.com/dnagee/image/upload/v1642159249/space-tourism-website/crew/image-mark-shuttleworth_p47n3b.png',
     role: 'Mission Specialist',
     bio: 'Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.',
   },
   {
     id: Math.random(),
     name: 'Victor Glover',
-    image: victorImage,
+    image:
+      'https://res.cloudinary.com/dnagee/image/upload/v1642159250/space-tourism-website/crew/image-victor-glover_mrjx42.png',
     role: 'Pilot',
     bio: 'Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew member of Expedition 64, and served as a station systems flight engineer.',
   },
   {
     id: Math.random(),
     name: 'Anousheh Ansari',
-    image: ansariImage,
+    image:
+      'https://res.cloudinary.com/dnagee/image/upload/v1642159249/space-tourism-website/crew/image-anousheh-ansari_uh7c1k.png',
     role: 'Flight Engineer',
     bio: 'Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space.',
   },

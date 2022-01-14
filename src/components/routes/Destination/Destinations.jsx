@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import Overlay from '../../UI/Overlay/Overlay';
 import classes from './Destinations.module.css';
-import moon from '../../../assets/images/destination/image-moon.webp';
-import mars from '../../../assets/images/destination/image-mars.webp';
-import europa from '../../../assets/images/destination/image-europa.webp';
-import titan from '../../../assets/images/destination/image-titan.webp';
+import Overlay from '../../UI/Overlay/Overlay';
 import routeExit from '../../../motions/routeExit';
 import Destination from './Destination';
 
@@ -18,7 +14,7 @@ const destinationsDataAvailable = [
       "See our planet as you've never seen it before. A perfect relaxing trip away to regain perspective and come back refreshed. While you're there, take in some history by visiting the Luna 2 and Apollo 11 landing sites",
     avgDistance: '384,400 km',
     estTravelTime: '3 days',
-    url: moon,
+    url: 'https://res.cloudinary.com/dnagee/image/upload/v1642159251/space-tourism-website/destination/image-moon_eppxzx.webp',
   },
   {
     id: Math.random(),
@@ -27,7 +23,7 @@ const destinationsDataAvailable = [
       ' Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest! Avg. distance 225 mil. km ',
     avgDistance: '384,400 KM',
     estTravelTime: '9 months',
-    url: mars,
+    url: 'https://res.cloudinary.com/dnagee/image/upload/v1642159251/space-tourism-website/destination/image-mars_lbccll.webp',
   },
   {
     id: Math.random(),
@@ -36,7 +32,7 @@ const destinationsDataAvailable = [
       'The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.',
     avgDistance: '628 mil. km',
     estTravelTime: '3 years',
-    url: europa,
+    url: 'https://res.cloudinary.com/dnagee/image/upload/v1642159251/space-tourism-website/destination/image-europa_vg74gw.webp',
   },
   {
     id: Math.random(),
@@ -45,7 +41,7 @@ const destinationsDataAvailable = [
       'The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.',
     avgDistance: '1.6 bil. km',
     estTravelTime: '7 years',
-    url: titan,
+    url: 'https://res.cloudinary.com/dnagee/image/upload/v1642159251/space-tourism-website/destination/image-titan_jr6o8u.webp',
   },
 ];
 const destinationsName = destinationsDataAvailable.map(

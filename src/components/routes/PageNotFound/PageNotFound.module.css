@@ -1,7 +1,7 @@
 .overlay {
-  background: url('../../../assets/images/page-not-found/pattern-hills.svg')
+  background: url('https://res.cloudinary.com/dnagee/image/upload/v1642159245/space-tourism-website/page-not-found/pattern-hills_ltyq1q.svg')
       repeat-x bottom,
-    url('../../../assets/images/page-not-found/bg-stars.svg');
+    url('https://res.cloudinary.com/dnagee/image/upload/v1642159245/space-tourism-website/page-not-found/bg-stars_dudk3q.svg');
   background-size: contain cover;
 }
 
