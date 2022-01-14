@@ -22,4 +22,5 @@ body {
   color: var(--primary-color);
   font-size: var(--regular-font-size);
   font-family: var(--primary-font), sans-serif;
+  overflow-x: hidden;
 }

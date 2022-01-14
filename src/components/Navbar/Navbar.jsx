@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import classes from './Navbar.module.css';
 import logo from '../../assets/images/shared/logo.svg';
 import openImg from '../../assets/images/shared/icon-hamburger.svg';
@@ -25,11 +26,6 @@ const Links = [
     number: '03',
     to: '/technology',
     name: 'TECHNOLOGY',
-  },
-  {
-    number: '04',
-    to: '/404',
-    name: 'SPACE 404',
   },
 ];
 

@@ -45,7 +45,37 @@
 }
 
 .route-content {
+  --height-size: calc(100vh - var(--navbar-height) - 2vh);
   position: relative;
-  height: calc(100vh - var(--navbar-height));
+  height: var(--height-size);
+  margin-top: 2vh;
   padding: var(--default-padding);
+}
+
+.page-short-info {
+  font-family: var(--secondary-font), sans-serif;
+  letter-spacing: 3.5px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.page-short-info span {
+  margin-right: 20px;
+  opacity: 0.6;
+}
+
+@media (max-width: 1070px) {
+  .route-content {
+    --height-size: calc(100vh - var(--navbar-height));
+    margin-top: 0;
+  }
+  .page-short-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .page-short-info {
+    font-size: 90%;
+  }
 }

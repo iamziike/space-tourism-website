@@ -1,13 +1,23 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import classes from './Technology.module.css';
 import Overlay from '../../UI/Overlay/Overlay';
 import TechnologyControl from './TechnologyControl';
-import classes from './Technology.module.css';
 import launchVehicleLandscape from '../../../assets/images/technology/image-launch-vehicle-landscape.jpg';
 import launchVehiclePortrait from '../../../assets/images/technology/image-launch-vehicle-portrait.jpg';
 import spaceCapsuleLandscape from '../../../assets/images/technology/image-space-capsule-landscape.jpg';
 import spaceCapsulePortrait from '../../../assets/images/technology/image-space-capsule-portrait.jpg';
 import spacePortLandscape from '../../../assets/images/technology/image-spaceport-landscape.jpg';
 import spacePortPortrait from '../../../assets/images/technology/image-spaceport-portrait.jpg';
+import routeExit from '../../../motions/routeExit';
+import {
+  firstChildVariant,
+  lastChildVariant,
+  leftExit,
+  rightExit,
+} from '../../../motions/default-motion-variants';
+import { controlsVariant, controlVariants } from './technology-variants';
 
 const technologies = [
   {
@@ -41,6 +51,7 @@ const technologies = [
       "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.",
   },
 ];
+
 const Technology = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPortrait, setIsPortrait] = useState(true);
@@ -68,51 +79,69 @@ const Technology = () => {
   return (
     <>
       <Overlay className={classes.overlay} />
-      <div
+      <motion.div
+        exit={routeExit}
         className={`${classes.technology} route-content no-visible-scrollbar`}
       >
-        <h2
-          className={`${classes['technology-page-intro']} ${classes['intro-phrase']}`}
-        >
+        <h2 className={`page-short-info`}>
           <span>03</span>
           SPACE LAUNCH 101
         </h2>
         <div className={classes['content-render']}>
-          <div className={classes.controls}>
+          <motion.div className={classes.controls} {...controlsVariant}>
             {technologies.map((technology, index) => {
               return (
-                <TechnologyControl
-                  key={technology.id}
-                  {...{
-                    index,
-                    currentIndex,
-                    onControlSelection: controlSelectionHandler,
-                  }}
-                />
+                <motion.div {...controlVariants} key={technology.id}>
+                  <TechnologyControl
+                    {...{
+                      index,
+                      currentIndex,
+                      onControlSelection: controlSelectionHandler,
+                    }}
+                  />
+                </motion.div>
               );
             })}
-          </div>
-          <div className={classes['text-content']}>
-            <h2 className={classes.intro}>THE TERMINOLOGY...</h2>
-            <h1 className={classes['tech-type']}>
-              {currentTechnology.name.toUpperCase()}
-            </h1>
-            <p className={classes.description}>
-              {currentTechnology.description}
-            </p>
-          </div>
-          <div className={classes['image-wrapper']}>
-            <img
-              src={
-                isPortrait
-                  ? currentTechnology.images.portrait
-                  : currentTechnology.images.landscape
-              }
-              alt='technology glance'
-            />
-          </div>
+          </motion.div>
+          <AnimatePresence exitBeforeEnter>
+            {technologies.map((technology, index) => {
+              return (
+                index === currentIndex && (
+                  <React.Fragment key={technology.id}>
+                    <motion.div
+                      className={classes['text-content']}
+                      {...firstChildVariant}
+                      exit={leftExit}
+                    >
+                      <h2 className={classes.intro}>THE TERMINOLOGY...</h2>
+                      <h1 className={classes['tech-type']}>
+                        {currentTechnology.name.toUpperCase()}
+                      </h1>
+                      <p className={classes.description}>
+                        {currentTechnology.description}
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      className={classes['image-wrapper']}
+                      {...lastChildVariant}
+                      exit={rightExit}
+                    >
+                      <img
+                        src={
+                          isPortrait
+                            ? currentTechnology.images.portrait
+                            : currentTechnology.images.landscape
+                        }
+                        alt='technology glance'
+                      />
+                    </motion.div>
+                  </React.Fragment>
+                )
+              );
+            })}
+          </AnimatePresence>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

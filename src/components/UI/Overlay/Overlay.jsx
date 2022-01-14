@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+
 import classes from './Overlay.module.css';
 
 const Overlay = ({ className }) => {
