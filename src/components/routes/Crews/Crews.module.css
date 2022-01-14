@@ -28,16 +28,15 @@
   transition: transform 0.5s;
   opacity: 0.7;
   font-family: var(--secondary-font);
+  writing-mode: vertical-lr;
 }
 
 .prev-crew {
   left: 0;
-  writing-mode: sideways-rl;
 }
 
 .next-crew {
   right: 0;
-  writing-mode: vertical-lr;
 }
 
 .prev-crew:hover,
