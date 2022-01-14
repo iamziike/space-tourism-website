@@ -1,19 +1,22 @@
 import { motion } from 'framer-motion';
 
+import classes from './Home.module.css';
 import Explore from '../../Explore/Explore';
 import Overlay from '../../UI/Overlay/Overlay';
-import classes from './Home.module.css';
 import routeExit from '../../../motions/routeExit';
 import {
   firstChildVariant,
   lastChildVariant,
-} from '../../../motions/defaultVariants';
+} from '../../../motions/default-motion-variants';
 
 const Home = () => {
   return (
-    <motion.div exit={routeExit}>
+    <>
       <Overlay className={classes.overlay} />
-      <div className={`${classes.home} route-content`}>
+      <motion.div
+        className={`${classes.home} route-content no-visible-scrollbar`}
+        exit={routeExit}
+      >
         <motion.div className={classes['hero-text']} {...firstChildVariant}>
           <h2>SO YOU WANT TO TRAVEL </h2>
           <h1>SPACE</h1>
@@ -27,8 +30,8 @@ const Home = () => {
         <motion.div {...lastChildVariant}>
           <Explore />
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

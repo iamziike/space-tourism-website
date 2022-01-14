@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
+import classes from './Technology.module.css';
 import Overlay from '../../UI/Overlay/Overlay';
 import TechnologyControl from './TechnologyControl';
-import classes from './Technology.module.css';
 import launchVehicleLandscape from '../../../assets/images/technology/image-launch-vehicle-landscape.jpg';
 import launchVehiclePortrait from '../../../assets/images/technology/image-launch-vehicle-portrait.jpg';
 import spaceCapsuleLandscape from '../../../assets/images/technology/image-space-capsule-landscape.jpg';
@@ -14,7 +14,9 @@ import routeExit from '../../../motions/routeExit';
 import {
   firstChildVariant,
   lastChildVariant,
-} from '../../../motions/defaultVariants';
+  leftExit,
+  rightExit,
+} from '../../../motions/default-motion-variants';
 import { controlsVariant, controlVariants } from './technology-variants';
 
 const technologies = [
@@ -81,9 +83,7 @@ const Technology = () => {
         exit={routeExit}
         className={`${classes.technology} route-content no-visible-scrollbar`}
       >
-        <h2
-          className={`${classes['technology-page-intro']} ${classes['intro-phrase']}`}
-        >
+        <h2 className={`page-short-info`}>
           <span>03</span>
           SPACE LAUNCH 101
         </h2>
@@ -91,9 +91,8 @@ const Technology = () => {
           <motion.div className={classes.controls} {...controlsVariant}>
             {technologies.map((technology, index) => {
               return (
-                <motion.div {...controlVariants}>
+                <motion.div {...controlVariants} key={technology.id}>
                   <TechnologyControl
-                    key={technology.id}
                     {...{
                       index,
                       currentIndex,
@@ -104,31 +103,43 @@ const Technology = () => {
               );
             })}
           </motion.div>
-          <motion.div
-            className={classes['text-content']}
-            {...firstChildVariant}
-          >
-            <h2 className={classes.intro}>THE TERMINOLOGY...</h2>
-            <h1 className={classes['tech-type']}>
-              {currentTechnology.name.toUpperCase()}
-            </h1>
-            <p className={classes.description}>
-              {currentTechnology.description}
-            </p>
-          </motion.div>
-          <motion.div
-            className={classes['image-wrapper']}
-            {...lastChildVariant}
-          >
-            <img
-              src={
-                isPortrait
-                  ? currentTechnology.images.portrait
-                  : currentTechnology.images.landscape
-              }
-              alt='technology glance'
-            />
-          </motion.div>
+          <AnimatePresence exitBeforeEnter>
+            {technologies.map((technology, index) => {
+              return (
+                index === currentIndex && (
+                  <React.Fragment key={technology.id}>
+                    <motion.div
+                      className={classes['text-content']}
+                      {...firstChildVariant}
+                      exit={leftExit}
+                    >
+                      <h2 className={classes.intro}>THE TERMINOLOGY...</h2>
+                      <h1 className={classes['tech-type']}>
+                        {currentTechnology.name.toUpperCase()}
+                      </h1>
+                      <p className={classes.description}>
+                        {currentTechnology.description}
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      className={classes['image-wrapper']}
+                      {...lastChildVariant}
+                      exit={rightExit}
+                    >
+                      <img
+                        src={
+                          isPortrait
+                            ? currentTechnology.images.portrait
+                            : currentTechnology.images.landscape
+                        }
+                        alt='technology glance'
+                      />
+                    </motion.div>
+                  </React.Fragment>
+                )
+              );
+            })}
+          </AnimatePresence>
         </div>
       </motion.div>
     </>

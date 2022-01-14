@@ -1,7 +1,7 @@
-import Overlay from '../../UI/Overlay/Overlay';
 import { motion } from 'framer-motion';
 
 import classes from './PageNotFound.module.css';
+import Overlay from '../../UI/Overlay/Overlay';
 import routeExit from '../../../motions/routeExit';
 
 const PageNotFound = () => {

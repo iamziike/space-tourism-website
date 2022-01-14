@@ -5,55 +5,49 @@
 }
 
 .crews {
-  padding-top: 20px;
-}
-
-.intro {
-  position: absolute;
-  font-family: var(--secondary-font), sans-serif;
-  opacity: 0.6;
-}
-
-.intro span {
-  opacity: 0.7;
-  margin-right: 20px;
+  --controls-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .crew-list {
-  height: 100%;
+  display: flex;
+  overflow: hidden;
 }
 
-.view-controls {
+.prev-crew,
+.next-crew {
+  position: absolute;
   display: grid;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0%;
-  align-content: center;
-  gap: 10px;
-  padding-left: calc(var(--default-horizontal-padding) / 2);
-}
-
-.view-control {
-  background-color: var(--primary-color);
-  padding: 4px;
-  border-radius: 50%;
-  opacity: 0.3;
+  place-content: center;
+  width: var(--default-horizontal-padding);
+  font-size: var(--controls-size);
+  height: 5%;
+  top: 42.5%;
   cursor: pointer;
-  transition: opacity 0.5s;
+  transition: transform 0.5s;
+  opacity: 0.7;
+  font-family: var(--secondary-font);
 }
 
-.view-control--current {
-  opacity: 1;
+.prev-crew {
+  left: 0;
+  writing-mode: sideways-rl;
+}
+
+.next-crew {
+  right: 0;
+  writing-mode: vertical-lr;
+}
+
+.prev-crew:hover,
+.next-crew:hover {
+  transform: scale(130%) rotateZ(180deg);
 }
 
 @media (max-width: 1070px) {
   .overlay {
     background-image: url('../../../assets/images/crew/background-crew-tablet.jpg');
-  }
-
-  .intro {
-    display: none;
   }
 }
 

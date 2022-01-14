@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
+import classes from './Crews.module.css';
 import Overlay from '../../UI/Overlay/Overlay';
 import Crew from './Crew/Crew';
-import CrewsViewControl from './CrewsViewControl';
-import classes from './Crews.module.css';
 import douglasImage from '../../../assets/images/crew/image-douglas-hurley.png';
 import markImage from '../../../assets/images/crew/image-mark-shuttleworth.png';
 import victorImage from '../../../assets/images/crew/image-victor-glover.png';
@@ -43,48 +42,63 @@ const crewMembers = [
 ];
 
 const Crews = () => {
-  const [idToShow, setIdToShow] = useState(crewMembers[0].id);
+  const crewListRef = useRef();
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const crewShowcaseHandler = (id) => {
-    setIdToShow(id);
+  const nextChoiceHandler = () => {
+    setSelectedIndex((prev) => {
+      const newIndex = prev + 1;
+      if (newIndex === crewMembers.length) return 0;
+      return newIndex;
+    });
   };
 
+  const prevChoiceHandler = () => {
+    setSelectedIndex((prev) => {
+      const newIndex = prev - 1;
+      if (newIndex === 0) return crewMembers.length - 1;
+      return newIndex;
+    });
+  };
+
+  useEffect(() => {
+    setInterval(() => {
+      nextChoiceHandler();
+    }, 7000);
+  }, []);
+
+  useEffect(() => {
+    const target = crewListRef.current;
+    target.scrollTo({
+      left: target.offsetWidth * selectedIndex,
+      behavior: 'smooth',
+    });
+  }, [selectedIndex]);
+
   return (
-    <motion.div exit={routeExit}>
+    <>
       <Overlay className={classes.overlay} />
-      <div className={`${classes.crews} no-visible-scrollbar route-content`}>
-        <h2 className={classes.intro}>
+      <motion.div className={`${classes.crews} route-content`} exit={routeExit}>
+        <h2 className='page-short-info'>
           <span>02</span>
           MEET YOUR CREW
         </h2>
-        <div>
-          {crewMembers.map((crewMember) => {
-            return (
-              <Crew key={crewMember.id} {...{ ...crewMember, idToShow }} />
-            );
-          })}
-          <div className={classes['view-controls']}>
-            {crewMembers.map((crewMember) => {
-              return (
-                <CrewsViewControl
-                  key={crewMember.id}
-                  {...{
-                    id: crewMember.id,
-                    crewShowcaseHandler,
-                    className: `${classes['view-control']} ${
-                      idToShow === crewMember.id
-                        ? classes['view-control--current']
-                        : ''
-                    }`,
-                    idToShow,
-                  }}
-                />
-              );
-            })}
-          </div>
+        <div className={classes['prev-crew']} onClick={prevChoiceHandler}>
+          Prev
         </div>
-      </div>
-    </motion.div>
+        <div
+          ref={crewListRef}
+          className={`${classes['crew-list']} no-visible-scrollbar`}
+        >
+          {crewMembers.map((crewMember) => (
+            <Crew key={crewMember.id} {...crewMember} />
+          ))}
+        </div>
+        <div className={classes['next-crew']} onClick={nextChoiceHandler}>
+          Next
+        </div>
+      </motion.div>
+    </>
   );
 };
 

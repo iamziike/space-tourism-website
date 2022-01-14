@@ -16,6 +16,20 @@ export const firstChildVariant = {
   animate: 'visible',
 };
 
+const exitTransition = {
+  damping: 0.9,
+};
+
+export const leftExit = {
+  x: '-100vw',
+  transition: exitTransition,
+};
+
+export const rightExit = {
+  x: '100vw',
+  transition: exitTransition,
+};
+
 export const lastChildVariant = {
   variants: {
     initial: { x: '100vw' },

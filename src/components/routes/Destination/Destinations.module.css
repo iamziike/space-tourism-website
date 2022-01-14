@@ -1,0 +1,5 @@
+.overlay {
+  background: url('../../../assets/images/destination/background-destination-desktop.jpg')
+    no-repeat;
+  background-size: cover;
+}

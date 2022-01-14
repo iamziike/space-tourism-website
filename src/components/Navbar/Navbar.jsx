@@ -27,11 +27,6 @@ const Links = [
     to: '/technology',
     name: 'TECHNOLOGY',
   },
-  {
-    number: '04',
-    to: '/404',
-    name: 'SPACE 404',
-  },
 ];
 
 const Navbar = () => {
