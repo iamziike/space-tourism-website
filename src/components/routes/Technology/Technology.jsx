@@ -11,7 +11,7 @@ import {
   leftExit,
   rightExit,
 } from '../../../motions/default-motion-variants';
-import { controlsVariant, controlVariants } from './technology-variants';
+import { controlsVariant, controlVariants } from './technology-motion-variants';
 
 const technologies = [
   {

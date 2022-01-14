@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 
+import classes from './Crew.module.css';
 import {
   firstChildVariant,
   lastChildVariant,
 } from '../../../../motions/default-motion-variants';
-
-import classes from './Crew.module.css';
 
 const Crew = ({ name, image, role, bio }) => {
   return (
